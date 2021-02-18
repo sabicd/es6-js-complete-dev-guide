@@ -189,3 +189,20 @@ function count (targetString) {
   return number;
 }
 count('aexiaa') //?
+
+// Template Literals/Strings
+const getMessage = () => `The year is ${new Date().getFullYear()}`;
+
+getMessage(); //?
+
+// When to reach for template strings
+const device_id = 4;
+const guid = 20;
+const usernameDetail = 'hello';
+
+const data = '{"device_id:"'+ device_id + '","guid":"' + guid + '","usernameDetail":"' + usernameDetail +'","}'; //?
+
+const dataES6 = `{"device_id":"${device_id}","guid:"${guid},"usernameDetail":"${usernameDetail}","}`; //?
+
+const year = 2016;
+const yearMessage = year; //?
