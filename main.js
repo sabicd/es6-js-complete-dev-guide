@@ -165,3 +165,27 @@ function balancedParens(string){
 }
 
 balancedParens('(()))('); //?
+
+//Variable declarations with const and let
+var color = 'red';
+color;
+
+//var name = 'Jane';
+//var title = 'Software Engineer';
+//var hourlyWage = 40;
+// ES6
+const name = 'Jane';
+let title = 'Software Engineer';
+let hourlyWage = 40;
+
+// What const and let solve
+
+function count (targetString) {
+  const characters = ['a','e', 'i'];
+  let number = 0;
+  for (var i = 0; i < targetString.length; i++){
+    if(characters.includes(targetString[i])) number++;
+  }
+  return number;
+}
+count('aexiaa') //?
