@@ -140,3 +140,28 @@ username.validate()//?
 const fields = [username,password,birthDate];
 
 fields.every(field => field.validate())//?
+
+//reduce helper
+
+numbers = [10,20,30,];
+
+const sumReduce = numbers.reduce((sum,number)=> sum += number, 0); //?
+
+var primaryColors = [
+  { color: 'red'},
+  { color: 'yellow'},
+  { color: 'blue'},
+];
+primaryColors.reduce((acc,color) => [...acc,color.color], []); //?
+
+// Ace next interview with reduce
+function balancedParens(string){
+  return !string.split('').reduce((previous, char) => {
+    if(previous < 0) return previous;
+    if (char ==='(') return ++previous;
+    if (char ===')') return --previous;
+    return previous;
+  },0);
+}
+
+balancedParens('(()))('); //?
