@@ -114,3 +114,29 @@ postForComment(posts,comment); //?
 
 // Using find to search for users
 
+// every and some
+var computers = [
+  { name: 'Apple', ram: 24},
+  { name: 'Compaq', ram: 4},
+  { name: 'Acer', ram: 32},
+];
+const computersCanRunProgram = computers.every(computer => computer.ram > 16) //?
+
+const someComputersCanRunProgram = computers.some(computer => computer.ram > 16) //?
+
+function Field(value) {
+  this.value = value;
+}
+
+Field.prototype.validate = function () {
+  return this.value.length > 0;
+}
+const username = new Field('2cool')//?
+const password = new Field('password1')//?
+const birthDate = new Field('10/10/2010')//?
+
+username.validate()//?
+
+const fields = [username,password,birthDate];
+
+fields.every(field => field.validate())//?
