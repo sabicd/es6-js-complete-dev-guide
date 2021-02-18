@@ -82,3 +82,35 @@ const commentsForPosts = (post, comments) => (
   comments.filter(comment => comment.postId === post.id)
 );
 commentsForPosts(post,comments) //?
+
+// find helper, search the array for a specific element, as soon as it is found, it will be returned (only the element, not an array)
+
+users = [
+  { name: 'Alex'},
+  { name: 'Jill'},
+  { name: 'Bill'},
+]
+
+const user = users.find(user => user.name === 'Alex') //?
+
+const Car = function (model) {
+  this.model = model;
+}
+var cars = [
+  new Car('Buick'),
+  new Car('Camaro'),
+  new Car('Focus'),
+]
+cars.find(car => car.model=== 'Focus') //?
+
+posts = [
+  { id: 1 , title: 'New Post'},
+  { id: 2, title: 'Old Post'},
+];
+const comment = {postId: 1, content: 'Great Post'};
+
+const postForComment = (posts, comment) => posts.find(post => post.id === comment.postId);
+postForComment(posts,comment); //?
+
+// Using find to search for users
+
