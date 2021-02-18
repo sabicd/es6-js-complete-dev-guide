@@ -206,3 +206,26 @@ const dataES6 = `{"device_id":"${device_id}","guid:"${guid},"usernameDetail":"${
 
 const year = 2016;
 const yearMessage = year; //?
+// Arrow functions
+const add = (a,b) => a + b;
+
+add(1,2);
+
+// Advanced usage of arrow functions
+
+const double = number => 2 * number;
+double(2); //?
+
+numbers = [1,2,3];
+numbers.map(number => number * 2); //?
+
+// When to use arrow functions
+
+const team = {
+  members: ['Jane', 'Bill'],
+  teamName: 'SuperSquad',
+  teamSummary: function() {
+    return this.members.map(member => `${member} - ${this.teamName}`)
+  }
+}
+team.teamSummary();//?
