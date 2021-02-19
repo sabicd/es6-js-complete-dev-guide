@@ -307,3 +307,93 @@ const MathLib = {
     return a * b;
   }
 }
+// Destructuring
+// es5
+/*
+var expense = {
+  type: 'Business',
+  amount: '$45 USD',
+};
+
+var type = expense.type;
+var amount = expense.amount;
+*/
+// es6
+const expense = {
+  type: 'Business',
+  amount: '$45 USD',
+};
+
+const { type, amount } = expense; //?
+
+// Destructuring Arguments Object
+var savedFile = {
+  extension: 'jpg',
+  name: 'repost',
+  size: 14040,
+};
+
+function fileSummary({ extension, name, size }, { color = 'red' }) {
+  return `${color} The file ${name}.${extension} is of size ${size}`
+}
+
+fileSummary(savedFile,{ color: 'red' }); //?
+
+// Destructuring arrays
+const companies = [
+  'Google',
+  'Facebook',
+  'Uber',
+]
+
+const [ techCompanyName, ...restOfTechCompanies ] = companies; //?
+techCompanyName//?
+typeof techCompanyName;//?
+restOfTechCompanies//?
+
+const companiesWithInfo = [
+  { name: 'Google', location: 'Mountain View'},
+  { name: 'Facebook', location: 'Menlo Park'},
+  { name: 'Uber', location: 'San Francisco'},
+];
+const [ { location: locationOfGoogle }, ...restOfTechCompaniesWithInfo] = companiesWithInfo;
+
+locationOfGoogle;//?
+
+const Google = {
+  locations: ['Mountain View', 'New York', 'London']
+}
+const { locations: [ firstLocationOfGoogle ]} = Google;
+
+firstLocationOfGoogle;//?
+
+// When to use destructuring?
+
+function signup({ username, password, email, dateOfBirth, city }) {
+  //create new user
+}
+const userToSignUp = {
+  username: 'myname',
+  password: 'mypassword',
+  email: 'email',
+  dateOfBirth: '1/1/1990',
+  city: 'New York',
+};
+
+signup(userToSignUp);
+
+// More on when to use destructuring
+
+const points = [
+  [4, 5],
+  [10, 1],
+  [0, 40],
+];
+/* make it look like this
+[
+  { x: 4, y: 5 },
+  { x: 10, y: 1 },
+  { x: 0, y: 40 },
+]
+*/
+points.map(([ x, y ]) => ({ x, y }))//?
