@@ -252,3 +252,28 @@ const inventory = [
 const bookshop = createBookshop(inventory);
 bookshop.inventoryValue(); //?
 bookshop.priceForTitle('Harry Potter III') //?
+// Default function arguments
+
+function makeAjaxRequest(url, method = 'GET') {
+  /* no more if checks needed to define a default value for an argument
+  if (!method) {
+    method = 'GET';
+  }
+  */
+  //logic to make the request
+}
+// Use cases of defaulting arguments
+function User(id) {
+  this.id = id;
+}
+
+function generateId() {
+  return Math.floor(Math.random() * 9999);
+}
+
+function createAdminUser(user = new User(generateId())) {
+  user.admin = true;
+
+  return user;
+}
+createAdminUser(); //?
