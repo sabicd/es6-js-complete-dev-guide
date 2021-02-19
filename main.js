@@ -229,3 +229,26 @@ const team = {
   }
 }
 team.teamSummary();//?
+// Enhanced Object Literals
+function createBookshop(inventory) {
+  return {
+    inventory,
+    inventoryValue() {
+      return this.inventory.reduce((sum, item) => sum += item.price, 0);
+    },
+    priceForTitle(title) {
+      const bookWithTheTitle = this.inventory.find(element => element.title === title);
+      return bookWithTheTitle ? bookWithTheTitle.price : 'NOT FOUND';
+    }
+  }
+}
+
+const inventory = [
+  { title: 'Harry Potter I', price: 10 },
+  { title: 'Eloquent Javascript', price: 15 },
+  { title: 'Harry Potter II', price: 15 },
+
+]
+const bookshop = createBookshop(inventory);
+bookshop.inventoryValue(); //?
+bookshop.priceForTitle('Harry Potter III') //?
