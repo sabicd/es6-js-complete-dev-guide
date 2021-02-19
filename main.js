@@ -449,3 +449,114 @@ class Toyota extends Vehicle {
 const toyota = new Toyota({color: 'red', title: 'Daily Driver' });//?
 toyota.honk();//?
 toyota.drive();//?
+// for of loop
+for (let color of colors) {
+  color //?
+}
+
+// generators
+ function* shopping(){
+   // stuff on the sidewalk
+   // walking down the sidewalk
+   // go into the store with cash
+  const stuffFromStore = yield 'cash';
+  // have stuff going to laundry
+  const stuffFromLaundry = yield 'laundry';
+  // walking back home with stuff and clean clothes
+  // arrived home
+  return [stuffFromStore, stuffFromLaundry];
+ }
+// stuff in the store;
+const gen = shopping();//?
+gen.next(); //leaving our house
+//walked into the store
+//purchase our stuff
+gen.next('groceries');//?
+//have groceries going for stuff from laundry
+gen.next('clean clothes');//?
+// have everything at home
+
+function* colorsGen() {
+  yield 'red';
+  yield 'blue';
+  yield 'green';
+}
+const genColors = colorsGen();
+
+const myColors = [];
+for (let colorFromGen of colorsGen()) {
+  myColors.push(colorFromGen);
+}
+
+myColors;//?
+
+// es6 symbol iterator teaches objects how to respond to for of loops
+const testingTeam = {
+  lead: 'Amanda',
+  tester: 'Bill',
+  [Symbol.iterator]: function* () {
+    yield this.lead,
+    yield this.tester
+  }
+}
+
+const engineeringTeam = {
+  testingTeam,
+  size: 3,
+  department: 'Engineering',
+  lead: 'Jill',
+  manager: 'Alex',
+  engineer: 'Dave',
+  [Symbol.iterator]: function* () {
+    yield this.lead;
+    yield this.manager;
+    yield this.engineer;
+    yield* testingTeam;
+  }
+};
+
+
+function* TestingTeamIterator(testingTeam) {
+  yield testingTeam.lead;
+  yield testingTeam.tester;
+}
+
+function* TeamIterator(team) {
+  yield team.lead;
+  yield team.manager;
+  yield team.engineer;
+  yield* team.testingTeam;
+}
+let teamMembers = [];
+
+for (let name of engineeringTeam){
+  teamMembers.push(name);
+}
+teamMembers;//?
+
+// Generators with recursion
+class Comment {
+  constructor(content, children) {
+    this.content = content;
+    this.children = children;
+  }
+  *[Symbol.iterator]() {
+    yield this.content;
+    for ( let child of this.children) {
+      yield* child;
+    }
+  }
+}
+const children = [
+  new Comment('good comment', []),
+  new Comment('meh', []),
+  new Comment('bad comment', []),
+]
+
+const tree = new Comment('Great post!', children);
+
+const values = [];
+for (let value of tree) {
+  values.push(value);
+}
+values;//?
