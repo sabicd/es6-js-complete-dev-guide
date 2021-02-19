@@ -85,7 +85,7 @@ commentsForPosts(post, comments) //?
 
 // find helper, search the array for a specific element, as soon as it is found, it will be returned (only the element, not an array)
 
-users = [
+const users = [
   { name: 'Alex' },
   { name: 'Jill' },
   { name: 'Bill' },
@@ -103,7 +103,7 @@ var cars = [
 ]
 cars.find(car => car.model === 'Focus') //?
 
-posts = [
+const posts = [
   { id: 1, title: 'New Post' },
   { id: 2, title: 'Old Post' },
 ];
@@ -442,11 +442,11 @@ class Toyota extends Vehicle {
     super({ title });
     this.color = color;
   }
-  honk(){
+  honk() {
     return 'beep';
   }
 }
-const toyota = new Toyota({color: 'red', title: 'Daily Driver' });//?
+const toyota = new Toyota({ color: 'red', title: 'Daily Driver' });//?
 toyota.honk();//?
 toyota.drive();//?
 // for of loop
@@ -455,17 +455,17 @@ for (let color of colors) {
 }
 
 // generators
- function* shopping(){
-   // stuff on the sidewalk
-   // walking down the sidewalk
-   // go into the store with cash
+function* shopping() {
+  // stuff on the sidewalk
+  // walking down the sidewalk
+  // go into the store with cash
   const stuffFromStore = yield 'cash';
   // have stuff going to laundry
   const stuffFromLaundry = yield 'laundry';
   // walking back home with stuff and clean clothes
   // arrived home
   return [stuffFromStore, stuffFromLaundry];
- }
+}
 // stuff in the store;
 const gen = shopping();//?
 gen.next(); //leaving our house
@@ -496,7 +496,7 @@ const testingTeam = {
   tester: 'Bill',
   [Symbol.iterator]: function* () {
     yield this.lead,
-    yield this.tester
+      yield this.tester
   }
 }
 
@@ -529,7 +529,7 @@ function* TeamIterator(team) {
 }
 let teamMembers = [];
 
-for (let name of engineeringTeam){
+for (let name of engineeringTeam) {
   teamMembers.push(name);
 }
 teamMembers;//?
@@ -542,7 +542,7 @@ class Comment {
   }
   *[Symbol.iterator]() {
     yield this.content;
-    for ( let child of this.children) {
+    for (let child of this.children) {
       yield* child;
     }
   }
@@ -560,3 +560,21 @@ for (let value of tree) {
   values.push(value);
 }
 values;//?
+
+// Promises and fetch
+const promise = new Promise((resolve, reject) => {
+  setTimeout(()=>{
+    resolve('resolved') //?
+  }, 3000)
+}); //?
+
+promise
+  .then(() => {
+    console.log("yes") //?
+  })
+  .then(() => {
+    console.log('also ran') //?
+  })
+  .catch(() => {
+    console.log('rejected')//?
+  })
