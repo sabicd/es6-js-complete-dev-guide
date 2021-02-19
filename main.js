@@ -277,3 +277,33 @@ function createAdminUser(user = new User(generateId())) {
   return user;
 }
 createAdminUser(); //?
+
+// Rest and spread operator
+function addNumbers(...numbers){
+  return numbers.reduce((sum,number) => sum += number, 0);
+}
+
+addNumbers(1,2,3,4,5);//?
+
+const defaultColors = ['red', 'green'];
+const userFavoriteColors = ['orange', 'yellow'];
+const fallColors = ['fire red', 'fall orange'];
+[ ...fallColors, 'blue', ...defaultColors, ...userFavoriteColors ];//?
+
+function validateShoppingList(...elements) {
+  if(!elements.includes('milk')) {
+    return ['milk',...elements];
+  }
+return elements;
+}
+
+validateShoppingList('oranges', 'bread');//?
+
+const MathLib = {
+  calculateProduct(...rest) {
+    return this.multiply(...rest);
+  },
+  multiply(a, b) {
+    return a * b;
+  }
+}
