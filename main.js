@@ -2,21 +2,21 @@
 // Array helper methods forEach, map, filter, find, every, some, reduce
 // These helper methods were previously part of various packages, but initially drafted into ES6
 
-var colors = [ 'red', 'blue', 'green'];
+var colors = ['red', 'blue', 'green'];
 
 // bad example
-for (var i =0; i<colors.length; i++) {
+for (var i = 0; i < colors.length; i++) {
   console.log(colors[i]);
 }
 
 // good example (parameter is an iterator function)
-colors.forEach(function(color){
+colors.forEach(function (color) {
   console.log(color);
 })
 
 // forEach continued
 // Create an array of numbers
-var numbers = [1,2,3,4,5];
+var numbers = [1, 2, 3, 4, 5];
 
 // Create iterator function outside to add up the numbers in the array
 const adder = number => sum += number;
@@ -29,10 +29,10 @@ console.log(sum);
 
 // map helper, most widely used helper
 
-numbers = [1,2,3];
+numbers = [1, 2, 3];
 var doubledNumbers = [];
 
-for (var i = 0; i <numbers.length; i++) {
+for (var i = 0; i < numbers.length; i++) {
   doubledNumbers.push(numbers[i] * 2);
 };
 
@@ -41,26 +41,26 @@ doubledNumbers
 var doubled = numbers.map(number => number * 2); //?
 
 var cars = [
-  { model: 'Buick', price: 'CHEAP'},
-  { model: 'Camaro', price: 'EXPENSIVE'},
+  { model: 'Buick', price: 'CHEAP' },
+  { model: 'Camaro', price: 'EXPENSIVE' },
 ];
 
 // this operation is called plucking
 var prices = cars.map(car => car.price); //?
 // filter helper
 var products = [
-  { name: 'cucumber', type: 'vegetable'},
-  { name: 'banana', type: 'fruit'},
-  { name: 'celery', type: 'vegetable'},
-  { name: 'orange', type: 'fruit'},
+  { name: 'cucumber', type: 'vegetable' },
+  { name: 'banana', type: 'fruit' },
+  { name: 'celery', type: 'vegetable' },
+  { name: 'orange', type: 'fruit' },
 ];
 
 var fruits = products.filter(product => product.type === 'fruit') //?
 // more filtering
 products = [
-  { name: 'cucumber', type: 'vegetable', quantity: 0, price: 1},
-  { name: 'banana', type: 'fruit', quantity: 10, price: 15},
-  { name: 'celery', type: 'vegetable', quantity: 30, price: 9},
+  { name: 'cucumber', type: 'vegetable', quantity: 0, price: 1 },
+  { name: 'banana', type: 'fruit', quantity: 10, price: 15 },
+  { name: 'celery', type: 'vegetable', quantity: 30, price: 9 },
   { name: 'orange', type: 'fruit', quantity: 3, price: 5 },
 ];
 
@@ -81,14 +81,14 @@ var comments = [
 const commentsForPosts = (post, comments) => (
   comments.filter(comment => comment.postId === post.id)
 );
-commentsForPosts(post,comments) //?
+commentsForPosts(post, comments) //?
 
 // find helper, search the array for a specific element, as soon as it is found, it will be returned (only the element, not an array)
 
 users = [
-  { name: 'Alex'},
-  { name: 'Jill'},
-  { name: 'Bill'},
+  { name: 'Alex' },
+  { name: 'Jill' },
+  { name: 'Bill' },
 ]
 
 const user = users.find(user => user.name === 'Alex') //?
@@ -101,24 +101,24 @@ var cars = [
   new Car('Camaro'),
   new Car('Focus'),
 ]
-cars.find(car => car.model=== 'Focus') //?
+cars.find(car => car.model === 'Focus') //?
 
 posts = [
-  { id: 1 , title: 'New Post'},
-  { id: 2, title: 'Old Post'},
+  { id: 1, title: 'New Post' },
+  { id: 2, title: 'Old Post' },
 ];
-const comment = {postId: 1, content: 'Great Post'};
+const comment = { postId: 1, content: 'Great Post' };
 
 const postForComment = (posts, comment) => posts.find(post => post.id === comment.postId);
-postForComment(posts,comment); //?
+postForComment(posts, comment); //?
 
 // Using find to search for users
 
 // every and some
 var computers = [
-  { name: 'Apple', ram: 24},
-  { name: 'Compaq', ram: 4},
-  { name: 'Acer', ram: 32},
+  { name: 'Apple', ram: 24 },
+  { name: 'Compaq', ram: 4 },
+  { name: 'Acer', ram: 32 },
 ];
 const computersCanRunProgram = computers.every(computer => computer.ram > 16) //?
 
@@ -137,31 +137,31 @@ const birthDate = new Field('10/10/2010')//?
 
 username.validate()//?
 
-const fields = [username,password,birthDate];
+const fields = [username, password, birthDate];
 
 fields.every(field => field.validate())//?
 
 //reduce helper
 
-numbers = [10,20,30,];
+numbers = [10, 20, 30,];
 
-const sumReduce = numbers.reduce((sum,number)=> sum += number, 0); //?
+const sumReduce = numbers.reduce((sum, number) => sum += number, 0); //?
 
 var primaryColors = [
-  { color: 'red'},
-  { color: 'yellow'},
-  { color: 'blue'},
+  { color: 'red' },
+  { color: 'yellow' },
+  { color: 'blue' },
 ];
-primaryColors.reduce((acc,color) => [...acc,color.color], []); //?
+primaryColors.reduce((acc, color) => [...acc, color.color], []); //?
 
 // Ace next interview with reduce
-function balancedParens(string){
+function balancedParens(string) {
   return !string.split('').reduce((previous, char) => {
-    if(previous < 0) return previous;
-    if (char ==='(') return ++previous;
-    if (char ===')') return --previous;
+    if (previous < 0) return previous;
+    if (char === '(') return ++previous;
+    if (char === ')') return --previous;
     return previous;
-  },0);
+  }, 0);
 }
 
 balancedParens('(()))('); //?
@@ -180,11 +180,11 @@ let hourlyWage = 40;
 
 // What const and let solve
 
-function count (targetString) {
-  const characters = ['a','e', 'i'];
+function count(targetString) {
+  const characters = ['a', 'e', 'i'];
   let number = 0;
-  for (var i = 0; i < targetString.length; i++){
-    if(characters.includes(targetString[i])) number++;
+  for (var i = 0; i < targetString.length; i++) {
+    if (characters.includes(targetString[i])) number++;
   }
   return number;
 }
@@ -200,23 +200,23 @@ const device_id = 4;
 const guid = 20;
 const usernameDetail = 'hello';
 
-const data = '{"device_id:"'+ device_id + '","guid":"' + guid + '","usernameDetail":"' + usernameDetail +'","}'; //?
+const data = '{"device_id:"' + device_id + '","guid":"' + guid + '","usernameDetail":"' + usernameDetail + '","}'; //?
 
 const dataES6 = `{"device_id":"${device_id}","guid:"${guid},"usernameDetail":"${usernameDetail}","}`; //?
 
 const year = 2016;
 const yearMessage = year; //?
 // Arrow functions
-const add = (a,b) => a + b;
+const add = (a, b) => a + b;
 
-add(1,2);
+add(1, 2);
 
 // Advanced usage of arrow functions
 
 const double = number => 2 * number;
 double(2); //?
 
-numbers = [1,2,3];
+numbers = [1, 2, 3];
 numbers.map(number => number * 2); //?
 
 // When to use arrow functions
@@ -224,7 +224,7 @@ numbers.map(number => number * 2); //?
 const team = {
   members: ['Jane', 'Bill'],
   teamName: 'SuperSquad',
-  teamSummary: function() {
+  teamSummary: function () {
     return this.members.map(member => `${member} - ${this.teamName}`)
   }
 }
@@ -279,22 +279,22 @@ function createAdminUser(user = new User(generateId())) {
 createAdminUser(); //?
 
 // Rest and spread operator
-function addNumbers(...numbers){
-  return numbers.reduce((sum,number) => sum += number, 0);
+function addNumbers(...numbers) {
+  return numbers.reduce((sum, number) => sum += number, 0);
 }
 
-addNumbers(1,2,3,4,5);//?
+addNumbers(1, 2, 3, 4, 5);//?
 
 const defaultColors = ['red', 'green'];
 const userFavoriteColors = ['orange', 'yellow'];
 const fallColors = ['fire red', 'fall orange'];
-[ ...fallColors, 'blue', ...defaultColors, ...userFavoriteColors ];//?
+[...fallColors, 'blue', ...defaultColors, ...userFavoriteColors];//?
 
 function validateShoppingList(...elements) {
-  if(!elements.includes('milk')) {
-    return ['milk',...elements];
+  if (!elements.includes('milk')) {
+    return ['milk', ...elements];
   }
-return elements;
+  return elements;
 }
 
 validateShoppingList('oranges', 'bread');//?
@@ -337,7 +337,7 @@ function fileSummary({ extension, name, size }, { color = 'red' }) {
   return `${color} The file ${name}.${extension} is of size ${size}`
 }
 
-fileSummary(savedFile,{ color: 'red' }); //?
+fileSummary(savedFile, { color: 'red' }); //?
 
 // Destructuring arrays
 const companies = [
@@ -346,24 +346,24 @@ const companies = [
   'Uber',
 ]
 
-const [ techCompanyName, ...restOfTechCompanies ] = companies; //?
+const [techCompanyName, ...restOfTechCompanies] = companies; //?
 techCompanyName//?
 typeof techCompanyName;//?
 restOfTechCompanies//?
 
 const companiesWithInfo = [
-  { name: 'Google', location: 'Mountain View'},
-  { name: 'Facebook', location: 'Menlo Park'},
-  { name: 'Uber', location: 'San Francisco'},
+  { name: 'Google', location: 'Mountain View' },
+  { name: 'Facebook', location: 'Menlo Park' },
+  { name: 'Uber', location: 'San Francisco' },
 ];
-const [ { location: locationOfGoogle }, ...restOfTechCompaniesWithInfo] = companiesWithInfo;
+const [{ location: locationOfGoogle }, ...restOfTechCompaniesWithInfo] = companiesWithInfo;
 
 locationOfGoogle;//?
 
 const Google = {
   locations: ['Mountain View', 'New York', 'London']
 }
-const { locations: [ firstLocationOfGoogle ]} = Google;
+const { locations: [firstLocationOfGoogle] } = Google;
 
 firstLocationOfGoogle;//?
 
@@ -396,4 +396,56 @@ const points = [
   { x: 0, y: 40 },
 ]
 */
-points.map(([ x, y ]) => ({ x, y }))//?
+points.map(([x, y]) => ({ x, y }))//?
+
+// Intro to Classes
+/* es5
+function Vehicle(options) {
+  this.title = options.title;
+
+}
+
+
+const vehicle = new Vehicle({ title: 'Focus' });//?
+vehicle.drive();//?
+
+
+function Toyota(options) {
+  Vehicle.call(this, options);
+  this.color = options.color;
+}
+Toyota.prototype = Object.create(Vehicle.prototype);
+Toyota.prototype.drive = function(){
+  return 'vroom';
+}
+Toyota.prototype.constructor = Toyota;
+Toyota.prototype.honk = function () {
+  return 'beep';
+}
+
+const toyota = new Toyota({ color: 'red', title: "Daily Driver" });
+toyota;//?
+toyota.drive()//?
+toyota.honk();//?
+*/
+// ES6 classes
+class Vehicle {
+  constructor(options) {
+    this.title = options.title;
+  }
+  drive() {
+    return 'vroom';
+  }
+}
+class Toyota extends Vehicle {
+  constructor({ color, title }) {
+    super({ title });
+    this.color = color;
+  }
+  honk(){
+    return 'beep';
+  }
+}
+const toyota = new Toyota({color: 'red', title: 'Daily Driver' });//?
+toyota.honk();//?
+toyota.drive();//?
